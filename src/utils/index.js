@@ -1,3 +1,4 @@
+import { set } from 'vue/types/umd';
 import remoteLoad from './remoteLoad';
 const { AMapCDN, AMapUiCDN } = require('@/plugins/cdn');
 
@@ -29,9 +30,9 @@ export function param2Obj(url) {
  * @param {boolean} immediate
  * @return {*}
  */
-
+// 做一段时间的延时才执行
 export function debounce(func, delay, immediate = false) {
-  let timer,
+  let timer, // 闭包记录timer变量
     context = this;
   return (...args) => {
     if (immediate) {
@@ -45,6 +46,29 @@ export function debounce(func, delay, immediate = false) {
     }, delay);
   };
 }
+// 使用定时器,定时一秒之后再去执行
+export function throttle(func, delay) {
+  let timer, // 闭包记录timer变量
+    context = this;
+  return (...args) => {
+    if (timer) return; //判断如果有计时器不清零直接返回啥也不做
+    timer = setTimeout(() => {
+      func.apply(context, args);
+      timer = null;
+    }, delay);
+  };
+}
+// const throttle = (handler, time) => {
+//   let t
+//   return () => {
+//       let _self = this //取throttle 执行作用域的this
+//       let _arg = arguments //利用闭包保存参数数组
+//       if (!t || Date.now() - t >= time ) {
+//           handler.apply(_self , _arg );
+//           t = Date.now(); //得到的当前时间戳
+//       }
+//   }
+// }
 
 /**
  * 获取geoJson数据  通过高德获取    递归获取区县geoJson

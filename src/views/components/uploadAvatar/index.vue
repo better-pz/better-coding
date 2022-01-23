@@ -115,6 +115,7 @@ export default {
     // },
 
     realTime(data) {
+      console.log('realTime', data);
       this.previewsImg = data;
     },
 

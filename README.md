@@ -5,20 +5,9 @@
   </a>
 </p>
 
-  <p align="center">
-    <a href="https://github.com/biubiubiu01/vue-antd-admin"><strong>探索本项目的文档 »</strong></a>
-    <br />
-    <br />
-    <a href="http://gist006.gitee.io/vue-antd-admin/">在线预览</a>
-    ·
-    <a href="https://github.com/biubiubiu01/vue-antd-admin/issues">提出Bug</a>
-    ·
-    <a href="https://github.com/biubiubiu01/vue-antd-admin/issues">提出建议</a>
-  </p>
-
 ## 简介
 
-[vue-antd-admin](http://gist006.gitee.io/vue-antd-admin/)是一个后台管理系统，基于[vue](https://github.com/vuejs/vue)+[ant-design-vue](https://github.com/vueComponent/ant-design-vue)开发，包含动态路由+权限管理解决用户权限问题，提供基础固定权限：admin、test、editor和自定义用户权限，可自定义修改角色对应的菜单；布局方面提供左右布局和上下布局两种，可自由切换；系统内置了3套主题，可随意切换；还有一些后台管理系统常用的功能如表单，table表等；
+[better-code](http://gist006.gitee.io/vue-antd-admin/)是我本人学习总结的项目，基于[vue](https://github.com/vuejs/vue)+[ant-design-vue](https://github.com/vueComponent/ant-design-vue)开发，包含动态路由+权限管理解决用户权限问题，提供基础固定权限：admin、test、editor和自定义用户权限，可自定义修改角色对应的菜单；布局方面提供左右布局和上下布局两种，可自由切换；系统内置了3套主题，可随意切换；还有一些后台管理系统常用的功能如表单，table表等；
 
 ## 测试账号
 ```
@@ -157,14 +146,7 @@ npm run build
 npm run test:unit
 ```
 
-## Online Demo
 
-[在线 Demo](http://gist006.gitee.io/vue-antd-admin/)
-
-## 最后
-
-这个项目参考了 [vue-element-admin](https://panjiachen.gitee.io/vue-element-admin/#/) 和 [ant-design-pro](https://preview.pro.antdv.com/dashboard/workplace),发现了好多好用的写法和方法，建议如果真想提升自己的代码水平，可以多看看大佬们的代码。
-开源不易，若觉得这个项目对你有用，可以点个[star](https://github.com/biubiubiu01/vue-antd-admin)，欢迎提出建议和bug :smile: 。
 
 
 
