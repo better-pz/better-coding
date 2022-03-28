@@ -75,6 +75,12 @@ const componentsRouter = {
       path: '/components/screenshot',
       component: () => import('@/views/components/screenshot/index'),
       meta: { title: '截屏', role: ['admin', 'test'] }
+    },
+    {
+      name: '虚拟列表',
+      path: '/components/virtualList',
+      component: () => import('@/views/components/virtualList/index'),
+      meta: { title: '虚拟列表', role: ['admin', 'test'] }
     }
   ]
 };

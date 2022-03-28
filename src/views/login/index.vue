@@ -8,7 +8,7 @@
         :wrapper-col="{ span: 22 }"
         ref="loginForm"
       >
-        <div class="title">Vue Antd Admin</div>
+        <div class="title">Better Code</div>
         <a-tabs v-model="currentTab" class="tabs" :tabBarGutter="35">
           <a-tab-pane key="user" tab="账号密码登录">
             <a-form-model-item prop="username" v-if="currentTab === 'user'">

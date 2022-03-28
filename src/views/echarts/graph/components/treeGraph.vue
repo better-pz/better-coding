@@ -30,27 +30,30 @@ export default {
               type: 'graph',
               layout: 'force',
               force: {
-                repulsion: 1600,
-                edgeLength: 200
+                //在每两个节点之间添加一个斥力
+                repulsion: 1600, //节点之间的斥力因子。
+                edgeLength: 200 //边的两个节点之间的距离
               },
-              roam: true,
-              draggable: true,
-              symbolSize: 80,
+              roam: true, //是否开启鼠标缩放和平移漫游
+              draggable: true, //节点是否可拖拽，只在使用力引导布局的时候有用。
+              symbolSize: 80, //节点标记的大小，可以设置成诸如 10 这样单一的数字，也可以用数组分开表示宽和高，例如 [20, 10] 表示标记宽为20，高为10。
               focusNodeAdjacency: true,
               edgeLabel: {
                 normal: {
-                  show: true,
+                  show: true, //是否显示标签。
                   textStyle: {
-                    fontSize: 16
+                    fontSize: 16 //标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 \n 换行。
                   },
                   formatter(x) {
+                    //标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 \n 换行。
                     return x.data.name;
                   }
                 }
               },
-              edgeSymbol: ['', 'arrow'],
+              edgeSymbol: ['', 'arrow'], //边两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定。默认不显示标记，常见的可以设置为箭头
               label: {
-                show: false
+                //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等。
+                show: false //是否显示标签。
               },
               itemStyle: {
                 normal: {

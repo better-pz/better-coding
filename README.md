@@ -1,7 +1,7 @@
 <p align="center">
   <a href="http://gist006.gitee.io/vue-antd-admin/">
     <img src="https://images.gitee.com/uploads/images/2020/1129/181145_3aeaf5c3_7647779.png" alt="Logo" width="250">
-   <h1 align="center"> vue antd admin</h3>
+   <h1 align="center"> Better Code</h3>
   </a>
 </p>
 

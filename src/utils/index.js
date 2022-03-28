@@ -1,4 +1,3 @@
-import { set } from 'vue/types/umd';
 import remoteLoad from './remoteLoad';
 const { AMapCDN, AMapUiCDN } = require('@/plugins/cdn');
 

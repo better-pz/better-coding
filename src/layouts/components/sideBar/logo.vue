@@ -1,7 +1,7 @@
 <template>
   <router-link to="/index" class="logo-wrapper ">
     <svg-icon icon="logo" class="verticalMiddle" :size="30" />
-    <div class="logo-title verticalMiddle">Vue Antd Admin</div>
+    <div class="logo-title verticalMiddle">Better Code</div>
   </router-link>
 </template>
 
