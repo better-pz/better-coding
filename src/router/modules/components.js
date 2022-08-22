@@ -81,6 +81,12 @@ const componentsRouter = {
       path: '/components/virtualList',
       component: () => import('@/views/components/virtualList/index'),
       meta: { title: '虚拟列表', role: ['admin', 'test'] }
+    },
+    {
+      name: '拖拽',
+      path: '/components/drag',
+      component: () => import('@/views/components/virtualList/index'),
+      meta: { title: '拖拽', role: ['admin', 'test'] }
     }
   ]
 };
