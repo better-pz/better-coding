@@ -30,5 +30,36 @@ Vue.directive('animate', {
   inserted: function(el, binding) {
     // 聚焦元素
     binding.addClass = () => {};
+    // 支持IntersectionObserver
+    if (window.IntersectionObserver) {
+      const obj = new IntersectionObserver(function(els) {
+        els.forEach(item => {
+          if (item.isIntersecting && item.target.className.indexOf(binding.value) === -1) {
+            item.target.className = binding.value + ' ' + item.target.className;
+            obj.unobserve(item.target); // 在加载后取消观察
+          }
+        });
+      });
+      obj.observe(el);
+    } else {
+      // 不支持使用getBoundingClientRect
+      const { top } = el.getBoundingClientRect();
+      const h = document.documentElement.clientHeight || document.body.clientHeight;
+      if (top < h) {
+        if (el.className.indexOf(binding.value) == -1) {
+          el.className = binding.value + ' ' + el.className;
+        }
+        if (binding.addClass) {
+          window.removeEventListener('scroll', binding.addClass);
+        }
+      }
+      window.addEventListener('scroll', binding.addClass, true);
+    }
+    binding.addClass();
+  },
+  unbind: function(el, binding) {
+    if (binding.addClass) {
+      window.removeEventListener('mousewheel', binding.addClass);
+    }
   }
 });
