@@ -135,3 +135,41 @@ export function getGeoJson(adcode, childAdcode = '') {
 export function formatJson(arr, filterVal) {
   return arr.map(v => filterVal.map(j => v[j].toString()));
 }
+
+/**
+ * requestAnimationFrame兼容处理
+ *
+ *
+ */
+
+export const raf = (function(r) {
+  if (r) {
+    return r;
+  } else {
+    let lastTime = 0;
+    return function(callback, element) {
+      let currTime = new Date().getTime();
+      let timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
+      let id = window.setTimeout(() => {
+        callback(currTime + timeToCall);
+      }, timeToCall);
+      lastTime = currTime + timeToCall;
+      return id;
+    };
+  }
+})();
+/**
+ * cancelAnimationFrame兼容处理
+ *
+ *
+ */
+
+export const caf = (function(c) {
+  if (c) {
+    return c;
+  } else {
+    return function(id) {
+      clearTimeout(id);
+    };
+  }
+})();

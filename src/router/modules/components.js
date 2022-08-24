@@ -87,6 +87,12 @@ const componentsRouter = {
       path: '/components/drag',
       component: () => import('@/views/components/virtualList/index'),
       meta: { title: '拖拽', role: ['admin', 'test'] }
+    },
+    {
+      name: '旋转',
+      path: '/components/revolve',
+      component: () => import('@/views/components/revolve/index'),
+      meta: { title: '旋转', role: ['admin', 'test'] }
     }
   ]
 };
