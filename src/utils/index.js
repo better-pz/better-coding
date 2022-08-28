@@ -1,6 +1,6 @@
 import remoteLoad from './remoteLoad';
 const { AMapCDN, AMapUiCDN } = require('@/plugins/cdn');
-
+import router from '@/router';
 /**
  * 用于将地址后面的参数转换成对象返回
  * @param {string} url
@@ -173,3 +173,48 @@ export const caf = (function(c) {
     };
   }
 })();
+let _leaveConfirmVm = null;
+export default {
+  /**
+   * 离开页面二次确认
+   */
+  leaveConfirm(
+    vm,
+    fn = () => {
+      return false;
+    },
+    tip = '当前页面数据未保存,确定离开?'
+  ) {
+    _leaveConfirmVm = vm;
+    vm.$on('hook:updated', () => {
+      window.onbeforeunload = function(event) {
+        if (fn(vm)) {
+          event = event || window.event;
+          if (event) {
+            event.preventDefault();
+            event.returnValue = '关闭提示';
+          }
+          return '关闭提示';
+        } else {
+          return null;
+        }
+      };
+    });
+    // 组件销毁后移除onbeforeunload 事件
+    vm.$once('hook:beforeDestroy', () => {
+      window.onbeforeunload = null;
+      router.beforeResolve = () => {
+        _leaveConfirmVm = {};
+      };
+    });
+
+    router.beforeResolve((to, from, next) => {
+      if (fn(_leaveConfirmVm)) {
+        const answer = window.confirm(tip);
+        answer ? next() : next(false);
+      } else {
+        next();
+      }
+    });
+  }
+};
