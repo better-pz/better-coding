@@ -175,6 +175,7 @@ export const caf = (function(c) {
 })();
 let _leaveConfirmVm = null;
 export default {
+  deeGet: deeGet,
   /**
    * 离开页面二次确认
    */
@@ -216,5 +217,40 @@ export default {
         next();
       }
     });
+  },
+
+  // 判断元素是否在可视区内
+  isInViewport(el, target) {
+    if (el) {
+      let rect = el.getBoundingClientRect();
+      if (target) {
+        let tRect = target.getBoundingClientRect();
+        return rect.top >= tRect.top && rect.bottom <= tRect.bottom;
+      } else {
+        return rect.top <= (window.innerHeight || document.documentElement.clientHeight) && rect.bottom >= 0;
+      }
+    }
+  },
+  // 对象数组去重
+  deDuplication(list, dataIndex) {
+    let obj = {};
+    return list.reduce(function(arr, next) {
+      obj[deeGet(next, dataIndex)] ? '' : obj[deeGet(next, dataIndex)] && arr.push(next);
+      return arr;
+    }, []);
   }
 };
+// 深度遍历去对象值
+function deeGet(obj, keys, defaultValue) {
+  return (
+    (!Array.isArray(keys)
+      ? keys
+          .replace(/\[/g, '.')
+          .replace(/\]/g, '')
+          .split('.')
+      : keys
+    ).reduce((o, k) => (o || {})[k], obj) ||
+    defaultValue ||
+    ''
+  );
+}
