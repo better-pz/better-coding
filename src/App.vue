@@ -26,6 +26,7 @@ export default {
       zIndex = 10000
     }) {
       const args = arguments[0];
+      // 测试ggit提交
       const canvas = document.createElement('canvas');
       canvas.setAttribute('width', width);
       canvas.setAttribute('height', height);
